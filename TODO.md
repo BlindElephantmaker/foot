@@ -3,6 +3,7 @@
 ### Docker
 - [x] php, fmp, nginx
 - [x] xdebug
+- [ ] Choose to install xdebug or not by env
 
 ### Symfony
 - [x] Install Symfony-skeleton
