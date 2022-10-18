@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Helper\Http;
+namespace App\Shared\Helper\Http;
 
 use Symfony\Component\HttpFoundation\Request;
 

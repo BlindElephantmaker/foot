@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Infrastructure;
+namespace App\Tests\Functional;
 
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-abstract class FunctionalTest extends WebTestCase
+abstract class FunctionalApiTest extends WebTestCase
 {
     public function getDecodedResponse(KernelBrowser $client): array
     {
