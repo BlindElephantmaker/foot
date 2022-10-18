@@ -1,0 +1,14 @@
+version: '3.9'
+
+services:
+  php:
+    expose:
+      - 9003
+
+  database:
+    ports:
+      - "5432:5432"
+
+  nginx:
+    ports:
+      - "80:80"

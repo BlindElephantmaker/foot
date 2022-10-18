@@ -1,0 +1,32 @@
+version: '3.9'
+
+services:
+  php:
+    restart: "no"
+    build:
+      context: "./php"
+    volumes:
+      - ./../:/var/www:rw
+      - ./php/configs:/usr/local/etc/php/conf.d
+    environment:
+      PHP_IDE_CONFIG: serverName=Docker
+
+  database:
+    restart: "no"
+    image: postgres:${POSTGRES_VERSION}-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - ./../var/postgresql:/var/lib/postgresql/data:rw
+
+  nginx:
+    restart: "no"
+    image: nginx:${NGINX_VERSION}-alpine
+    depends_on:
+      - php
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      - ./../:/var/www
+      - ./../var/log/nginx:/var/log/nginx:rw
