@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Functional\Controller;
+namespace App\Tests\Functional\Shared\Action;
 
 use App\Shared\Helper\Http\Http;
 use App\Tests\Functional\FunctionalApiTest;
 
-final class HealthCheckerTest extends FunctionalApiTest
+final class HealthCheckerActionTest extends FunctionalApiTest
 {
     public function testThatHealthCheckerHasSuccessResponse(): void
     {

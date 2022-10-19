@@ -10,8 +10,7 @@
 - [x] Install Symfony-skeleton
 - [x] Create first controller
 - [x] Api test for the first controller
-- [ ] Make entity User: UUID + phone
-- [ ] Migrations
+- [x] Make entity User: UUID + phone
 - [ ] CQRS actions to create and to get user
 - [ ] Functional tests for User
 - [ ] JWT

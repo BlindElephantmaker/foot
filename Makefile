@@ -27,5 +27,5 @@ migrate-diff:
 migrate-up:
 	${DOCKER_COMPOSE} exec php /bin/sh -c "php bin/console doctrine:migrations:migrate --no-interaction"
 
-migrate-down:
-	${DOCKER_COMPOSE} exec php /bin/sh -c "php bin/console doc:migrations:execute --down 'DoctrineMigrations\$(name)' -n"
+migrate-down: # example: ``` make migrate-down name=Version20221018215600 ```
+	${DOCKER_COMPOSE} exec php /bin/sh -c "php bin/console doc:migrations:execute --down 'App\Shared\Database\Migration\$(name)' -n"

@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Shared\Controller;
+namespace App\Shared\Action;
 
 use App\Shared\Helper\Http\Http;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route(path: '/', methods: [Http::METHOD_GET])]
-class HealthChecker
+class HealthCheckerAction
 {
     public function __invoke(): JsonResponse
     {
