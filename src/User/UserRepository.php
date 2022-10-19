@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\User;
 
+use App\User\Entity\Email\Email;
 use App\User\Entity\Id\UserId;
-use App\User\Entity\Phone\Phone;
 use App\User\Entity\User;
 use App\User\Exception\UserNotFoundException;
 
@@ -21,5 +21,5 @@ interface UserRepository
     /**
      * @throws UserNotFoundException
      */
-    public function getByPhone(Phone $phone): User;
+    public function getByEmail(Email $email): User;
 }

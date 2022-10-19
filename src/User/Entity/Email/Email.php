@@ -4,14 +4,15 @@ declare(strict_types=1);
 
 namespace App\User\Entity\Email;
 
-use Stringable;
+use App\Shared\ValueObject\ValueObjectString;
 use Webmozart\Assert\Assert;
 use Webmozart\Assert\InvalidArgumentException;
 
-final class Email implements Stringable
+final class Email extends ValueObjectString
 {
-    private string $value;
-
+    /**
+     * @throws EmailIsInvalidException
+     */
     public function __construct(string $value)
     {
         try {
@@ -20,16 +21,6 @@ final class Email implements Stringable
             throw new EmailIsInvalidException();
         }
 
-        $this->value = $value;
-    }
-
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-
-    public function __toString()
-    {
-        return $this->getValue();
+        parent::__construct($value);
     }
 }

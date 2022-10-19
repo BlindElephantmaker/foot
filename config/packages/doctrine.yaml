@@ -4,6 +4,7 @@ doctrine:
     types:
       App\User\Entity\Email\EmailType: 'App\User\Entity\Email\EmailType'
       App\User\Entity\Id\UserIdType: 'App\User\Entity\Id\UserIdType'
+      App\User\Entity\Password\PasswordType: 'App\User\Entity\Password\PasswordType'
 
     # IMPORTANT: You MUST configure your server version,
     # either here or in the DATABASE_URL env var (see .env file)

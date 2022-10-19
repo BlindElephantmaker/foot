@@ -4,13 +4,11 @@ declare(strict_types=1);
 
 namespace App\Shared\ValueObject\Uuid;
 
-use Stringable;
+use App\Shared\ValueObject\ValueObjectString;
 use Symfony\Component\Uid\Uuid as SymfonyUuid;
 
-class Uuid implements Stringable
+class Uuid extends ValueObjectString
 {
-    private string $value;
-
     public static function next(): static
     {
         $value = SymfonyUuid::v4()->toRfc4122();
@@ -30,18 +28,8 @@ class Uuid implements Stringable
         return new static($value);
     }
 
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-
-    public function __toString()
-    {
-        return $this->getValue();
-    }
-
     private function __construct(string $value)
     {
-        $this->value = $value;
+        parent::__construct($value);
     }
 }

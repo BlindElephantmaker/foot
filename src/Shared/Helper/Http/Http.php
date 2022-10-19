@@ -9,4 +9,5 @@ use Symfony\Component\HttpFoundation\Request;
 final class Http
 {
     public const METHOD_GET = Request::METHOD_GET;
+    public const METHOD_POST = Request::METHOD_POST;
 }
