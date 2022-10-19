@@ -8,5 +8,4 @@ use App\Shared\ValueObject\Uuid\Uuid;
 
 final class UserId extends Uuid
 {
-
 }

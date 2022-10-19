@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\User\Entity;
 
+use App\User\Entity\Email\Email;
+use App\User\Entity\Email\EmailType;
 use App\User\Entity\Id\UserId;
 use App\User\Entity\Id\UserIdType;
-use App\User\Entity\Phone\Phone;
-use App\User\Entity\Phone\PhoneType;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
@@ -18,13 +18,13 @@ final class User
     #[ORM\Column(type: UserIdType::NAME, unique: true)]
     private UserId $id;
 
-    #[ORM\Column(type: PhoneType::NAME, length: 12, unique: true)]
-    private Phone $phone;
+    #[ORM\Column(type: EmailType::NAME, unique: true)]
+    private Email $email;
 
-    public function __construct(UserId $id, Phone $phone)
+    public function __construct(UserId $id, Email $email)
     {
         $this->id = $id;
-        $this->phone = $phone;
+        $this->email = $email;
     }
 
     public function getId(): UserId
@@ -32,8 +32,8 @@ final class User
         return $this->id;
     }
 
-    public function getPhone(): Phone
+    public function getEmail(): Email
     {
-        return $this->phone;
+        return $this->email;
     }
 }

@@ -2,7 +2,7 @@ doctrine:
   dbal:
     url: '%env(resolve:DATABASE_URL)%'
     types:
-      App\User\Entity\Phone\PhoneType: 'App\User\Entity\Phone\PhoneType'
+      App\User\Entity\Email\EmailType: 'App\User\Entity\Email\EmailType'
       App\User\Entity\Id\UserIdType: 'App\User\Entity\Id\UserIdType'
 
     # IMPORTANT: You MUST configure your server version,
