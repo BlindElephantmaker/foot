@@ -19,12 +19,17 @@ doctrine:
         dir: '%kernel.project_dir%/src/User/Entity'
         prefix: 'App\User\Entity'
         alias: User
+      Security:
+        is_bundle: false
+        dir: '%kernel.project_dir%/src/Security/Entity'
+        prefix: 'App\Security\Entity'
+        alias: Security
 
-when@test: # todo: what is it?
+when@test:
   doctrine:
     dbal:
       # "TEST_TOKEN" is typically set by ParaTest
-      dbname_suffix: '_test%env(default::TEST_TOKEN)%'
+      dbname_suffix: '_test%env(default::TEST_TOKEN)%'  # todo: what is it?
 
 when@prod:
   doctrine:

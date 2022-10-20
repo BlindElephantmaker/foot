@@ -15,17 +15,18 @@ security:
 
   firewalls:
     login:
-      pattern: ^/api/auth/token/login
+      pattern: ^/api/auth/token
       stateless: true
       json_login:
         username_path: email
-        check_path: /api/auth/token/login
+        check_path: api_login_check
         success_handler: lexik_jwt_authentication.handler.authentication_success
         failure_handler: lexik_jwt_authentication.handler.authentication_failure
+      refresh_jwt: ~
 
     api:
       pattern: ^/api
-      stateless: false
+      stateless: true # todo what is it?
       jwt: ~
 
     dev:
@@ -46,6 +47,7 @@ security:
   # Note: Only the *first* access control that matches will be used
   access_control:
     - { path: ^/api/auth/token/login, roles: PUBLIC_ACCESS }
+    - { path: ^/api/auth/token/refresh, roles: PUBLIC_ACCESS }
     - { path: ^/api/user/registration, roles: PUBLIC_ACCESS }
     - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
   # - { path: ^/admin, roles: ROLE_ADMIN }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Shared\Action;
 
-use App\Shared\Helper\Http\Http;
+use App\Shared\Helper\Http;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 

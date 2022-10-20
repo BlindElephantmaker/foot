@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Functional\Shared\Action;
 
-use App\Shared\Helper\Http\Http;
+use App\Shared\Helper\Http;
 use App\Tests\Functional\FunctionalApiTest;
 
 final class HealthCheckerActionTest extends FunctionalApiTest

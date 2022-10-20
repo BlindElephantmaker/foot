@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Shared\Action\User;
 
-use App\Shared\Helper\Http\Http;
+use App\Shared\Helper\Http;
 use App\Shared\Service\Flusher;
 use App\User\Entity\Email\Email;
 use App\User\Entity\Email\EmailIsInvalidException;
