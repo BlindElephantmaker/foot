@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\User\Entity;
 
 use App\Security\AuthUserInterface;
-use App\Shared\Database\Helper\Types;
 use App\User\Entity\Email\Email;
+use App\User\Entity\Email\EmailType;
 use App\User\Entity\Id\UserId;
 use App\User\Entity\Id\UserIdType;
 use App\User\Entity\Password\Password;
@@ -21,11 +21,8 @@ final class User implements AuthUserInterface
     #[ORM\Column(type: UserIdType::NAME, unique: true)]
     private UserId $id;
 
-    // todo: Fix it. Change property to value-object Email
-    // todo: When creating access token, not called method getUserIdentifier()
-    // todo: Object is taken via reflection and don`t use Stringable interface
-    #[ORM\Column(type: Types::STRING, unique: true)]
-    private string $email;
+    #[ORM\Column(type: EmailType::NAME, unique: true)]
+    private Email $email;
 
     #[ORM\Column(type: PasswordType::NAME)]
     private Password $password;
@@ -33,17 +30,12 @@ final class User implements AuthUserInterface
     public function __construct(UserId $id, Email $email)
     {
         $this->id = $id;
-        $this->email = $email->getValue();
+        $this->email = $email;
     }
 
     public function getId(): UserId
     {
         return $this->id;
-    }
-
-    public function getEmail(): Email
-    {
-        return new Email($this->email);
     }
 
     public function getPassword(): string
@@ -60,7 +52,7 @@ final class User implements AuthUserInterface
 
     public function getUserIdentifier(): string
     {
-        return $this->email;
+        return $this->email->getValue();
     }
 
     public function getRoles(): array
