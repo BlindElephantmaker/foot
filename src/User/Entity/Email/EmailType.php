@@ -16,7 +16,7 @@ final class EmailType extends StringType
         return self::NAME;
     }
 
-    public function convertToDatabaseValue(mixed $value, AbstractPlatform $platform): ?string
+    public function convertToDatabaseValue(mixed $value, AbstractPlatform $platform): mixed
     {
         return $value instanceof Email ? $value->getValue() : $value;
     }

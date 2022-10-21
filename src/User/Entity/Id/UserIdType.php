@@ -17,7 +17,7 @@ final class UserIdType extends GuidType
         return self::NAME;
     }
 
-    public function convertToDatabaseValue($value, AbstractPlatform $platform): mixed
+    public function convertToDatabaseValue(mixed $value, AbstractPlatform $platform): mixed
     {
         return $value instanceof UserId ? $value->getValue() : $value;
     }
@@ -25,7 +25,7 @@ final class UserIdType extends GuidType
     /**
      * @throws UuidIsInvalidException
      */
-    public function convertToPHPValue($value, AbstractPlatform $platform)
+    public function convertToPHPValue($value, AbstractPlatform $platform): ?UserId
     {
         return !empty($value) ? UserId::fromString($value) : null;
     }

@@ -11,7 +11,7 @@
 - [x] Create first controller
 - [x] Api test for the first controller
 - [x] Make entity User
-- [ ] CQRS to action login
+- [x] CQRS to action login
 - [ ] Functional tests to auth
 - [ ] Cover with unit tests
 - [x] JWT
