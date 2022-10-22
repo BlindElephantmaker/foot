@@ -7,7 +7,6 @@ namespace App\User\Command\Registration;
 use App\Shared\Messenger\Command\CommandHandlerInterface;
 use App\Shared\Service\Flusher;
 use App\User\Entity\Email\Email;
-use App\User\Entity\Id\UserId;
 use App\User\Exception\UserNotFoundException;
 use App\User\Factory\UserFactory;
 use App\User\UserRepository;
@@ -23,7 +22,7 @@ final class RegistrationHandler implements CommandHandlerInterface
     /**
      * @throws UserAlreadyExistException
      */
-    public function __invoke(RegistrationCommand $command): UserId
+    public function __invoke(RegistrationCommand $command): RegistrationResponse
     {
         if ($this->isUserExist($command->getEmail())) {
             throw new UserAlreadyExistException();
@@ -34,7 +33,7 @@ final class RegistrationHandler implements CommandHandlerInterface
         $this->userRepository->add($user);
         $this->flusher->flush();
 
-        return $user->getId();
+        return new RegistrationResponse($user->getId());
     }
 
     private function isUserExist(Email $email): bool

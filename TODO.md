@@ -16,6 +16,14 @@
 - [ ] Cover with unit tests
 - [x] JWT
 - [ ] Swagger
+- [ ] Handle response
+    - [ ] User-friendly message by exception
+    - [ ] Translate messages ru_RU/en_EN
+    - [ ] Return 500 if not domain exception
+    - [x] Call method getValue of value objects
+    - [ ] Log exception
+- [ ] To decode request before controller
+- [ ] Reorganize project
   
 ### Frontend
 - [ ] Create pages registration and authorization

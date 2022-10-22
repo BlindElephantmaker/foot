@@ -4,13 +4,11 @@ declare(strict_types=1);
 
 namespace App\Shared\ValueObject;
 
-use Stringable;
-
-abstract class ValueObjectString implements Stringable
+abstract class ValueObjectString implements ValueObject
 {
-    public function __construct(private string $value)
-    {
-    }
+    public function __construct(
+        private string $value,
+    ) {}
 
     public function getValue(): string
     {
