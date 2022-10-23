@@ -8,4 +8,5 @@ use App\Shared\Exception\ValidationException;
 
 final class EmailIsInvalidException extends ValidationException
 {
+    public const NAME = 'email_is_invalid';
 }

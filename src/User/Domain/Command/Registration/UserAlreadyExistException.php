@@ -8,4 +8,5 @@ use App\Shared\Exception\DomainException;
 
 final class UserAlreadyExistException extends DomainException
 {
+    public const NAME = 'user_already_exist';
 }

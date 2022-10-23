@@ -8,4 +8,5 @@ use App\Shared\Exception\DomainException;
 
 final class UserNotFoundException extends DomainException
 {
+    public const NAME = 'user_not_found';
 }
