@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\User\Entity\Email;
+namespace App\User\Domain\Entity;
 
 use App\Shared\ValueObject\ValueObjectString;
+use App\User\Domain\Exception\EmailIsInvalidException;
 use Webmozart\Assert\Assert;
 use Webmozart\Assert\InvalidArgumentException;
 

@@ -2,11 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\User\Entity\Password;
+namespace App\User\Domain\Entity;
 
 use App\Shared\ValueObject\ValueObjectString;
-use App\User\Entity\User;
-use App\User\Service\UserPasswordHasher\UserPasswordHasherInterface;
+use App\User\Domain\Service\UserPasswordHasherInterface;
 
 final class Password extends ValueObjectString
 {

@@ -2,12 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App\User\Entity\Email;
+namespace App\User\Infrastructure\Entity;
 
+use App\User\Domain\Entity\Password;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\StringType;
 
-final class EmailType extends StringType
+final class PasswordType extends StringType
 {
     public const NAME = self::class;
 
@@ -18,14 +19,11 @@ final class EmailType extends StringType
 
     public function convertToDatabaseValue(mixed $value, AbstractPlatform $platform): mixed
     {
-        return $value instanceof Email ? $value->getValue() : $value;
+        return $value instanceof Password ? $value->getValue() : $value;
     }
 
-    /**
-     * @throws EmailIsInvalidException
-     */
-    public function convertToPHPValue($value, AbstractPlatform $platform): ?Email
+    public function convertToPHPValue($value, AbstractPlatform $platform): ?Password
     {
-        return !empty($value) ? new Email($value) : null;
+        return !empty($value) ? Password::fromString($value) : null;
     }
 }

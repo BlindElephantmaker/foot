@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\User\Command\Registration;
+namespace App\User\Domain\Command\Registration;
 
 use App\Shared\Messenger\Command\CommandInterface;
-use App\User\Entity\Email\Email;
+use App\User\Domain\Entity\Email;
 
 final class RegistrationCommand implements CommandInterface
 {

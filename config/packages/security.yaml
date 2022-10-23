@@ -1,7 +1,7 @@
 security:
   # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
   password_hashers:
-    App\User\Entity\User: auto
+    App\User\Domain\Entity\User: auto
     Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface:
       algorithm: auto
       cost: 15
@@ -10,7 +10,7 @@ security:
   providers:
     app_user_provider:
       entity:
-        class: App\User\Entity\User
+        class: App\User\Domain\Entity\User
         property: email
 
   firewalls:

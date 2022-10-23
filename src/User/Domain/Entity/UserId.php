@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\User\Entity\Id;
+namespace App\User\Domain\Entity;
 
 use App\Shared\ValueObject\Uuid\Uuid;
 

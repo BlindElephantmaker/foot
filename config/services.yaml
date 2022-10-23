@@ -24,7 +24,7 @@ services:
   App\:
     resource: '../src/'
     exclude: # todo: what is it?
-      - '../src/User/Entity/'
+      - '../src/User/Domain/Entity/'
       - '../src/Shared/Kernel.php'
 
   App\Shared\Action\:

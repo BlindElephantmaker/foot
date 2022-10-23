@@ -2,16 +2,17 @@
 
 declare(strict_types=1);
 
-namespace App\User;
+namespace App\User\Infrastructure\Repository;
 
-use App\User\Entity\Email\Email;
-use App\User\Entity\Id\UserId;
-use App\User\Entity\User;
-use App\User\Exception\UserNotFoundException;
+use App\User\Domain\Entity\Email;
+use App\User\Domain\Entity\UserId;
+use App\User\Domain\Entity\User;
+use App\User\Domain\Exception\UserNotFoundException;
+use App\User\Domain\Repository\UserRepositoryInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 
-final class UserRepositoryPsql implements UserRepository
+final class UserRepository implements UserRepositoryInterface
 {
     private EntityRepository $repository;
 

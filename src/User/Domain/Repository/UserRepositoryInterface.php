@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\User;
+namespace App\User\Domain\Repository;
 
-use App\User\Entity\Email\Email;
-use App\User\Entity\Id\UserId;
-use App\User\Entity\User;
-use App\User\Exception\UserNotFoundException;
+use App\User\Domain\Entity\Email;
+use App\User\Domain\Entity\UserId;
+use App\User\Domain\Entity\User;
+use App\User\Domain\Exception\UserNotFoundException;
 
-interface UserRepository
+interface UserRepositoryInterface
 {
     public function add(User $user): void;
 

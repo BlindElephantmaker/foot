@@ -2,14 +2,15 @@
 
 declare(strict_types=1);
 
-namespace App\User\Service\UserPasswordHasher;
+namespace App\User\Infrastructure\Service;
 
-use App\User\Entity\User;
+use App\User\Domain\Entity\User;
+use App\User\Domain\Service\UserPasswordHasherInterface;
 
 final class UserPasswordHasher implements UserPasswordHasherInterface
 {
     public function __construct(
-        private \Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface $passwordHasher
+        private \Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface $passwordHasher,
     ) {}
 
     public function hash(User $user, string $password): string

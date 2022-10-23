@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\User\Service\UserPasswordHasher;
+namespace App\User\Domain\Service;
 
-use App\User\Entity\User;
+use App\User\Domain\Entity\User;
 
 interface UserPasswordHasherInterface
 {

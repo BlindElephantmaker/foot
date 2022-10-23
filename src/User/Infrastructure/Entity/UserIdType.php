@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\User\Entity\Id;
+namespace App\User\Infrastructure\Entity;
 
 use App\Shared\ValueObject\Uuid\UuidIsInvalidException;
+use App\User\Domain\Entity\UserId;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\GuidType;
 

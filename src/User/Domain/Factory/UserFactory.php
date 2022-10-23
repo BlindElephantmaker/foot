@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App\User\Factory;
+namespace App\User\Domain\Factory;
 
-use App\User\Entity\Email\Email;
-use App\User\Entity\Id\UserId;
-use App\User\Entity\Password\Password;
-use App\User\Entity\User;
-use App\User\Service\UserPasswordHasher\UserPasswordHasherInterface;
+use App\User\Domain\Entity\Email;
+use App\User\Domain\Entity\Password;
+use App\User\Domain\Entity\UserId;
+use App\User\Domain\Entity\User;
+use App\User\Domain\Service\UserPasswordHasherInterface;
 
 final class UserFactory
 {

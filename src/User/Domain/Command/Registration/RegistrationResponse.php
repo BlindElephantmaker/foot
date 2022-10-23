@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\User\Command\Registration;
+namespace App\User\Domain\Command\Registration;
 
-use App\User\Entity\Id\UserId;
+use App\User\Domain\Entity\UserId;
 
 final class RegistrationResponse
 {

@@ -2,15 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\User\Entity;
+namespace App\User\Domain\Entity;
 
 use App\Security\AuthUserInterface;
-use App\User\Entity\Email\Email;
-use App\User\Entity\Email\EmailType;
-use App\User\Entity\Id\UserId;
-use App\User\Entity\Id\UserIdType;
-use App\User\Entity\Password\Password;
-use App\User\Entity\Password\PasswordType;
+use App\User\Infrastructure\Entity\EmailType;
+use App\User\Infrastructure\Entity\PasswordType;
+use App\User\Infrastructure\Entity\UserIdType;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]

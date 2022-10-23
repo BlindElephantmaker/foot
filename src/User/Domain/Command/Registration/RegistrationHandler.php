@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace App\User\Command\Registration;
+namespace App\User\Domain\Command\Registration;
 
 use App\Shared\Messenger\Command\CommandHandlerInterface;
 use App\Shared\Service\Flusher;
-use App\User\Entity\Email\Email;
-use App\User\Exception\UserNotFoundException;
-use App\User\Factory\UserFactory;
-use App\User\UserRepository;
+use App\User\Domain\Entity\Email;
+use App\User\Domain\Exception\UserNotFoundException;
+use App\User\Domain\Factory\UserFactory;
+use App\User\Domain\Repository\UserRepositoryInterface;
 
 final class RegistrationHandler implements CommandHandlerInterface
 {
     public function __construct(
         private UserFactory $userFactory,
-        private UserRepository $userRepository,
+        private UserRepositoryInterface $userRepository,
         private Flusher $flusher,
     ) {}
 
