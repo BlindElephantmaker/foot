@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\User\Domain\Entity;
 
-use App\Security\AuthUserInterface;
+use App\Security\Domain\AuthUserInterface;
 use App\User\Infrastructure\Entity\EmailType;
 use App\User\Infrastructure\Entity\PasswordType;
 use App\User\Infrastructure\Entity\UserIdType;

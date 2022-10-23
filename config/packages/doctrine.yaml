@@ -21,8 +21,8 @@ doctrine:
         alias: User
       Security:
         is_bundle: false
-        dir: '%kernel.project_dir%/src/Security/Entity'
-        prefix: 'App\Security\Entity'
+        dir: '%kernel.project_dir%/src/Security/Domain/Entity'
+        prefix: 'App\Security\Domain\Entity'
         alias: Security
 
 when@test:
