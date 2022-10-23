@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Shared\Messenger\Query;
 
-interface QueryInterface
+use App\Shared\Messenger\MessageInterface;
+
+interface QueryInterface extends MessageInterface
 {
 }

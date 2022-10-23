@@ -8,10 +8,7 @@ use App\Shared\Http\HttpMethod;
 use App\Shared\Http\JsonResponse;
 use App\Shared\Messenger\Command\CommandBus;
 use App\User\Domain\Command\Registration\RegistrationCommand;
-use App\User\Domain\Entity\Email;
-use App\User\Domain\Exception\EmailIsInvalidException;
 use Exception;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
@@ -23,10 +20,9 @@ final class RegistrationAction
         private NormalizerInterface $normalizer,
     ) {}
 
-    public function __invoke(Request $request): JsonResponse
+    public function __invoke(RegistrationCommand $command): JsonResponse
     {
         try {
-            $command = $this->decodeRequest($request);
             $response = $this->commandBus->dispatch($command);
         } catch (Exception $e) {
             // todo how handle exceptions from bus? Exceptions: EmailIsInvalidException and UserAlreadyExistException
@@ -36,19 +32,5 @@ final class RegistrationAction
         return new JsonResponse(
             $this->normalizer->normalize($response, 'json'),
         );
-    }
-
-    /**
-     * todo: how move this method to middleware and stop write code for this
-     * @throws EmailIsInvalidException
-     */
-    private function decodeRequest(Request $request): RegistrationCommand
-    {
-        $decoded = json_decode($request->getContent(), true);
-        $email = new Email($decoded['email']);
-
-        $plaintextPassword = $decoded['password'];
-
-        return new RegistrationCommand($email, $plaintextPassword);
     }
 }

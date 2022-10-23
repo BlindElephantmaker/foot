@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Shared\Messenger\Command;
 
-interface CommandInterface
+use App\Shared\Messenger\MessageInterface;
+
+interface CommandInterface extends MessageInterface
 {
 }

@@ -22,7 +22,7 @@
     - [ ] Return 500 if not domain exception
     - [x] Call method getValue of value objects
     - [ ] Log exception
-- [ ] A request decode to Command/Query before controller
+- [x] A request decode to Command/Query before controller
 - [x] Reorganize project
   
 ### Frontend

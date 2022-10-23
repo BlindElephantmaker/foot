@@ -35,6 +35,14 @@ services:
     tags:
       - { name: serializer.normalizer }
 
+  App\Shared\Serializer\ValueObjectDenormalizer:
+    tags:
+      - { name: serializer.denormalizer }
+
+  App\Shared\Action\Resolver\MessengerResolver:
+    tags:
+      - { name: controller.argument_value_resolver }
+
   # add more service definitions when explicit configuration is needed
   # please note that last definitions always *replace* previous ones
 
