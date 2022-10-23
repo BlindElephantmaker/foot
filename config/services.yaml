@@ -31,17 +31,21 @@ services:
     resource: '../src/Shared/Action/'
     tags: [ 'controller.service_arguments' ]
 
-  App\Shared\Serializer\ValueObjectNormalizer:
+  App\Shared\ValueObject\Serializer\ValueObjectNormalizer:
     tags:
       - { name: serializer.normalizer }
 
-  App\Shared\Serializer\ValueObjectDenormalizer:
+  App\Shared\ValueObject\Serializer\ValueObjectDenormalizer:
     tags:
       - { name: serializer.denormalizer }
 
   App\Shared\Action\Resolver\MessengerResolver:
     tags:
       - { name: controller.argument_value_resolver }
+
+  App\Shared\Exception\Listener\ExceptionListener:
+    tags:
+      - { name: kernel.event_listener, event: kernel.exception }
 
   # add more service definitions when explicit configuration is needed
   # please note that last definitions always *replace* previous ones

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\User\Domain\Command\Registration;
 
-use App\User\Domain\Exception\UserException;
+use App\Shared\Exception\DomainException;
 
-final class UserAlreadyExistException extends UserException
+final class UserAlreadyExistException extends DomainException
 {
 }

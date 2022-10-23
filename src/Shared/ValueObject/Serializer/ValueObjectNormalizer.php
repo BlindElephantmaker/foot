@@ -2,11 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Shared\Serializer;
+namespace App\Shared\ValueObject\Serializer;
 
 use App\Shared\ValueObject\ValueObject;
 use ArrayObject;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use function is_object;
 
 final class ValueObjectNormalizer implements NormalizerInterface
 {
@@ -23,6 +24,6 @@ final class ValueObjectNormalizer implements NormalizerInterface
      */
     public function supportsNormalization(mixed $data, string $format = null): bool
     {
-        return \is_object($data) && $data instanceof ValueObject;
+        return is_object($data) && $data instanceof ValueObject;
     }
 }

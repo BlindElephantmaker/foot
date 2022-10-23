@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\User\Domain\Exception;
 
-final class UserNotFoundException extends UserException
+use App\Shared\Exception\DomainException;
+
+final class UserNotFoundException extends DomainException
 {
 }

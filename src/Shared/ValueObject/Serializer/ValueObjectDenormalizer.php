@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Shared\Serializer;
+namespace App\Shared\ValueObject\Serializer;
 
 use App\Shared\ValueObject\ValueObject;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;

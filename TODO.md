@@ -19,9 +19,10 @@
 - [ ] Handle response
     - [ ] User-friendly message by exception
     - [ ] Translate messages ru_RU/en_EN
-    - [ ] Return 500 if not domain exception
+    - [x] Return 500 if not domain exception
     - [x] Call method getValue of value objects
     - [ ] Log exception
+    - [ ] Multiple validation errors
 - [x] A request decode to Command/Query before controller
 - [x] Reorganize project
   

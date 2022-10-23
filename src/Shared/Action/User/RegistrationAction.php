@@ -7,8 +7,8 @@ namespace App\Shared\Action\User;
 use App\Shared\Http\HttpMethod;
 use App\Shared\Http\JsonResponse;
 use App\Shared\Messenger\Command\CommandBus;
+use App\Shared\Serializer\SerializerFormat;
 use App\User\Domain\Command\Registration\RegistrationCommand;
-use Exception;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
@@ -22,15 +22,11 @@ final class RegistrationAction
 
     public function __invoke(RegistrationCommand $command): JsonResponse
     {
-        try {
-            $response = $this->commandBus->dispatch($command);
-        } catch (Exception $e) {
-            // todo how handle exceptions from bus? Exceptions: EmailIsInvalidException and UserAlreadyExistException
-            dd($e);
-        }
-
         return new JsonResponse(
-            $this->normalizer->normalize($response, 'json'),
+            $this->normalizer->normalize(
+                $this->commandBus->dispatch($command),
+                SerializerFormat::JSON,
+            ),
         );
     }
 }
