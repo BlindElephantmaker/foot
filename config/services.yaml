@@ -31,14 +31,6 @@ services:
     resource: '../src/Shared/Action/'
     tags: [ 'controller.service_arguments' ]
 
-#  App\Shared\Http\EventListener\ExceptionListener: # todo not used
-#    tags:
-#      - { name: kernel.event_listener, event: kernel.exception }
-#
-#  App\Shared\Http\EventListener\ResponseListener:
-#    tags:
-#      - { name: kernel.event_listener, event: kernel.response }
-
   App\Shared\Serializer\ValueObjectNormalizer:
     tags:
       - { name: serializer.normalizer }

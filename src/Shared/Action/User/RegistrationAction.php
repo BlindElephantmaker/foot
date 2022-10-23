@@ -6,7 +6,7 @@ namespace App\Shared\Action\User;
 
 use App\Shared\Http\HttpMethod;
 use App\Shared\Http\JsonResponse;
-use App\Shared\Messenger\Command\CommandBusInterface;
+use App\Shared\Messenger\Command\CommandBus;
 use App\User\Command\Registration\RegistrationCommand;
 use App\User\Entity\Email\Email;
 use App\User\Entity\Email\EmailIsInvalidException;
@@ -19,7 +19,7 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 final class RegistrationAction
 {
     public function __construct(
-        private CommandBusInterface $commandBus,
+        private CommandBus $commandBus,
         private NormalizerInterface $normalizer,
     ) {}
 
