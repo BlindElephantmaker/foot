@@ -5,9 +5,11 @@ declare(strict_types=1);
 namespace App\Shared\Exception\Listener;
 
 use App\Shared\Exception\DomainException;
+use App\Shared\Exception\Exception;
 use App\Shared\Exception\ValidationException;
-use App\Shared\Http\HttpResponseCode;
-use App\Shared\Http\JsonResponse;
+use App\Shared\Http\BadRequestResponse;
+use App\Shared\Http\InternalServerErrorResponse;
+use App\Shared\Http\UnprocessableEntityResponse;
 use App\Shared\Translation\Translation;
 use Symfony\Component\HttpKernel\Event\ExceptionEvent;
 use Symfony\Component\Messenger\Exception\HandlerFailedException;
@@ -22,37 +24,43 @@ final class ExceptionListener
 
     public function __invoke(ExceptionEvent $event): void
     {
-        $exception = $this->getExceptionFromEvent($event);
-        $httpResponseCode = $this->getHttpResponseCode($exception);
+        $exception = $this->getDomainException($event->getThrowable());
+        if ($exception !== null) {
+            $this->setResponseClientError($event, $exception);
+            return;
+        }
 
-        $message = $this->translator->trans(
-            $exception->getMessage(),
-            domain: Translation::DOMAIN,
-        );
-
-        $event->setResponse(new JsonResponse(
-            ['message' => $message],
-            $httpResponseCode
-        ));
+        $this->setResponseInternalError($event);
     }
 
-    private function getExceptionFromEvent(ExceptionEvent $event): Throwable
+    private function getDomainException(Throwable $exception): ?Exception
     {
-        $exception = $event->getThrowable();
+        if ($exception instanceof HandlerFailedException) {
+            $exception = $exception->getPrevious();
+        }
 
-        return $exception instanceof HandlerFailedException ? $exception->getPrevious() : $exception;
+        return $exception instanceof Exception ? $exception : null;
     }
 
-    private function getHttpResponseCode(Throwable $exception): int
+    private function setResponseClientError(ExceptionEvent $event, Exception $exception): void
     {
+        $message = $this->translator->trans($exception::NAME, domain: Translation::DOMAIN);
+
         if ($exception instanceof ValidationException) {
-            return HttpResponseCode::BAD_REQUEST;
+            $response = new BadRequestResponse(['message' => $message]);
+            $event->setResponse($response);
         }
 
         if ($exception instanceof DomainException) {
-            return HttpResponseCode::UNPROCESSABLE_ENTITY;
+            $response = new UnprocessableEntityResponse(['message' => $message]);
+            $event->setResponse($response);
         }
+    }
 
-        return HttpResponseCode::INTERNAL_SERVER_ERROR;
+    private function setResponseInternalError(ExceptionEvent $event): void
+    {
+        $message = $this->translator->trans(Exception::NAME, domain: Translation::DOMAIN);
+        $response = new InternalServerErrorResponse(['message' => $message]);
+        $event->setResponse($response);
     }
 }

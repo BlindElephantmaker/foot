@@ -26,6 +26,7 @@
 - [x] A request decode to Command/Query before controller
 - [x] Reorganize project
 - [ ] Add user`s locale
+- [ ] ELK for logs (Elasticsearch, Logstash, and Kibana)
   
 ### Frontend
 - [ ] Create pages registration and authorization

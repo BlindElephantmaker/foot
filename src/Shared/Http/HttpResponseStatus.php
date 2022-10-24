@@ -6,8 +6,10 @@ namespace App\Shared\Http;
 
 use Symfony\Component\HttpFoundation\Response;
 
-final class HttpResponseCode
+final class HttpResponseStatus
 {
+    public const OK = Response::HTTP_OK;
+
     public const BAD_REQUEST = Response::HTTP_BAD_REQUEST;
     public const UNPROCESSABLE_ENTITY = Response::HTTP_UNPROCESSABLE_ENTITY;
 
