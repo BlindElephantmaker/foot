@@ -10,7 +10,7 @@ use App\Shared\Exception\ValidationException;
 use App\Shared\Http\BadRequestResponse;
 use App\Shared\Http\InternalServerErrorResponse;
 use App\Shared\Http\UnprocessableEntityResponse;
-use App\Shared\Translation\Translation;
+use App\Shared\Translation\TranslationDomain;
 use Symfony\Component\HttpKernel\Event\ExceptionEvent;
 use Symfony\Component\Messenger\Exception\HandlerFailedException;
 use Symfony\Contracts\Translation\TranslatorInterface;
@@ -19,7 +19,7 @@ use Throwable;
 final class ExceptionListener
 {
     public function __construct(
-        private TranslatorInterface $translator,
+        private readonly TranslatorInterface $translator,
     ) {}
 
     public function __invoke(ExceptionEvent $event): void
@@ -44,7 +44,10 @@ final class ExceptionListener
 
     private function setResponseClientError(ExceptionEvent $event, Exception $exception): void
     {
-        $message = $this->translator->trans($exception::NAME, domain: Translation::DOMAIN);
+        $message = $this->translator->trans(
+            $exception::NAME,
+            domain: TranslationDomain::match(TranslationDomain::TRANSLATIONS)
+        );
 
         if ($exception instanceof ValidationException) {
             $response = new BadRequestResponse(['message' => $message]);
@@ -59,7 +62,10 @@ final class ExceptionListener
 
     private function setResponseInternalError(ExceptionEvent $event): void
     {
-        $message = $this->translator->trans(Exception::NAME, domain: Translation::DOMAIN);
+        $message = $this->translator->trans(
+            Exception::NAME,
+            domain: TranslationDomain::match(TranslationDomain::TRANSLATIONS),
+        );
         $response = new InternalServerErrorResponse(['message' => $message]);
         $event->setResponse($response);
     }

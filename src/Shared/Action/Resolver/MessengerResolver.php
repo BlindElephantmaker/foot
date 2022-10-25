@@ -15,7 +15,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 final class MessengerResolver implements ArgumentValueResolverInterface
 {
     public function __construct(
-        private DenormalizerInterface $denormalizer,
+        private readonly DenormalizerInterface $denormalizer,
     ) {}
 
     public function supports(Request $request, ArgumentMetadata $argument): bool

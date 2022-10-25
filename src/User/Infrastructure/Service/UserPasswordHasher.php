@@ -10,7 +10,7 @@ use App\User\Domain\Service\UserPasswordHasherInterface;
 final class UserPasswordHasher implements UserPasswordHasherInterface
 {
     public function __construct(
-        private \Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface $passwordHasher,
+        private readonly \Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface $passwordHasher,
     ) {}
 
     public function hash(User $user, string $password): string

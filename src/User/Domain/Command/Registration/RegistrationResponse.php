@@ -9,11 +9,6 @@ use App\User\Domain\Entity\UserId;
 final class RegistrationResponse
 {
     public function __construct(
-        private UserId $userId
+        public readonly UserId $userId
     ) {}
-
-    public function getUserId(): UserId
-    {
-        return $this->userId;
-    }
 }

@@ -17,8 +17,8 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 final class RegistrationAction
 {
     public function __construct(
-        private CommandBus $commandBus,
-        private NormalizerInterface $normalizer,
+        private readonly CommandBus $commandBus,
+        private readonly NormalizerInterface $normalizer,
     ) {}
 
     public function __invoke(RegistrationCommand $command): JsonResponse

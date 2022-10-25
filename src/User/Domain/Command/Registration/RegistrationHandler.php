@@ -14,9 +14,9 @@ use App\User\Domain\Repository\UserRepositoryInterface;
 final class RegistrationHandler implements CommandHandlerInterface
 {
     public function __construct(
-        private UserFactory $userFactory,
-        private UserRepositoryInterface $userRepository,
-        private Flusher $flusher,
+        private readonly UserFactory $userFactory,
+        private readonly UserRepositoryInterface $userRepository,
+        private readonly Flusher $flusher,
     ) {}
 
     /**
@@ -24,11 +24,11 @@ final class RegistrationHandler implements CommandHandlerInterface
      */
     public function __invoke(RegistrationCommand $command): RegistrationResponse
     {
-        if ($this->isUserExist($command->getEmail())) {
+        if ($this->isUserExist($command->email)) {
             throw new UserAlreadyExistException();
         }
 
-        $user = $this->userFactory->make($command->getEmail(), $command->getPassword());
+        $user = $this->userFactory->make($command->email, $command->password);
 
         $this->userRepository->add($user);
         $this->flusher->flush();

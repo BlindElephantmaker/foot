@@ -17,7 +17,7 @@ final class UserRepository implements UserRepositoryInterface
     private EntityRepository $repository;
 
     public function __construct(
-        private EntityManagerInterface $em
+        private readonly EntityManagerInterface $em
     ) {
         $this->repository = $em->getRepository(User::class);
     }

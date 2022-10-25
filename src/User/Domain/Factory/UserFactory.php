@@ -13,7 +13,7 @@ use App\User\Domain\Service\UserPasswordHasherInterface;
 final class UserFactory
 {
     public function __construct(
-        private UserPasswordHasherInterface $passwordHasher,
+        private readonly UserPasswordHasherInterface $passwordHasher,
     ) {}
 
     public function make(Email $email, string $password): User

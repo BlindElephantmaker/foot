@@ -12,7 +12,7 @@ final class QueryBus
     use HandleTrait;
 
     public function __construct(
-        private MessageBusInterface $messageBus
+        private MessageBusInterface $messageBus,
     ) {}
 
     public function dispatch(QueryInterface $query): mixed

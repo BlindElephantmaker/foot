@@ -10,17 +10,7 @@ use App\User\Domain\Entity\Email;
 final class RegistrationCommand implements CommandInterface
 {
     public function __construct(
-        private Email $email,
-        private string $password,
+        public readonly Email $email,
+        public readonly string $password,
     ) {}
-
-    public function getEmail(): Email
-    {
-        return $this->email;
-    }
-
-    public function getPassword(): string
-    {
-        return $this->password;
-    }
 }

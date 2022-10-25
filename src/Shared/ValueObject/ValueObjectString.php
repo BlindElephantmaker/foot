@@ -7,7 +7,7 @@ namespace App\Shared\ValueObject;
 abstract class ValueObjectString implements ValueObject
 {
     public function __construct(
-        private string $value,
+        private readonly string $value,
     ) {}
 
     public function getValue(): string
